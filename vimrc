@@ -12,10 +12,8 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 " My bundles
-Plugin 'elixir-lang/vim-elixir'
 Plugin 'ervandew/supertab'
 Plugin 'kchmck/vim-coffee-script'
-Plugin 'koron/nyancat-vim'
 Plugin 'skwp/greplace.vim'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'thoughtbot/vim-rspec'
@@ -29,27 +27,24 @@ Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'vim-ruby/vim-ruby'
-Plugin 'wincent/Command-T'
-
-" nelstrom's plugin depends on kana's
-Plugin 'kana/vim-textobj-user'
-Plugin 'nelstrom/vim-textobj-rubyblock'
-
-" Clojure
-Plugin 'guns/vim-clojure-static'
-Plugin 'tpope/vim-classpath'
-Plugin 'tpope/vim-fireplace'
-Plugin 'tpope/vim-leiningen'
+Plugin 'croaky/vim-colors-github'
+Plugin 'kien/ctrlp.vim'
+Plugin 'scrooloose/syntastic'
+Plugin 'tpope/vim-haml'
+Plugin 'bling/vim-airline'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'godlygeek/tabular.git'
 
 " Colors
-Plugin 'nanotech/jellybeans.vim'
+Plugin 'morhetz/gruvbox'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
 
 " Use the colorscheme from above
-colorscheme jellybeans
+colorscheme gruvbox
+set guifont=Source\ Code\ Pro\ for\ Powerline:h14
 
 " ========================================================================
 " Ruby stuff
@@ -66,9 +61,6 @@ augroup myfiletypes
   " Make ?s part of words
   autocmd FileType ruby,eruby,yaml setlocal iskeyword+=?
 
-  " Clojure
-  autocmd FileType clojure setlocal colorcolumn=80
-  autocmd FileType clojure map <Leader>t :!lein test<cr>
 augroup END
 
 " Enable built-in matchit plugin
@@ -93,9 +85,6 @@ map <Leader>ct :Rtemplate client/
 map <Leader>cv :Rjview client/
 map <Leader>cn :e ~/Dropbox/notes/coding-notes.txt<cr>
 map <Leader>d orequire 'pry'<cr>binding.pry<esc>:w<cr>
-map <Leader>dr :e ~/Dropbox<cr>
-map <Leader>dj :e ~/Dropbox/notes/debugging_journal.txt<cr>
-map <Leader>ec :e ~/code/
 map <Leader>g :Start gitsh<cr>
 map <Leader>gw :!git add . && git commit -m 'WIP' && git push<cr>
 map <Leader>f :call OpenFactoryFile()<CR>
@@ -169,13 +158,12 @@ set showcmd		" display incomplete commands
 set autoindent
 set showmatch
 set nowrap
-set backupdir=~/.tmp
-set directory=~/.tmp " Don't clutter my dirs up with swp and tmp files
+"set backupdir=~/.tmp
+"set directory=~/.tmp " Don't clutter my dirs up with swp and tmp files
 set autoread
 set wmh=0
 set viminfo+=!
 set guioptions-=T
-set guifont=Triskweline_10:h10
 set et
 set sw=2
 set smarttab
@@ -186,6 +174,22 @@ set relativenumber
 set gdefault " assume the /g flag on :s substitutions to replace all matches in a line
 set autoindent " always set autoindenting on
 set bg=light
+
+" Centralize backups, swapfiles and undo history
+if !isdirectory("~/.vim/backups")
+    call mkdir("~/.vim/backups", "p")
+endif
+if !isdirectory("~/.vim/swaps")
+    call mkdir("~/.vim/swaps", "p")
+endif
+if !isdirectory("~/.vim/undo")
+    call mkdir("~/.vim/undo", "p")
+endif
+set backupdir=~/.vim/backups
+set directory=~/.vim/swaps
+if exists("&undodir")
+    set undodir=~/.vim/undo
+endif
 
 " Set the tag file search order
 set tags=./tags;
@@ -313,7 +317,7 @@ function! OpenFactoryFile()
 endfunction
 
 " Set gutter background to black
-highlight SignColumn ctermbg=black
+"highlight SignColumn ctermbg=black
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " RENAME CURRENT FILE (thanks Gary Bernhardt)
@@ -348,6 +352,61 @@ autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 " Wrap the quickfix window
 autocmd FileType qf setlocal wrap linebreak
 
+" For airline/powerline
+let g:airline_powerline_fonts = 1
+
+" Go stuff
+filetype off
+filetype plugin indent off
+set runtimepath+=$GOROOT/misc/vim
+"autocmd BufWritePre *.go Fmt
+let g:go_fmt_command = "goimports"
+autocmd Filetype go setlocal ts=2 sts=2 sw=2
+filetype plugin indent on
+syntax on
+
+" Other annoyances
+if $VIM_CRONTAB == 'true'
+    set nobackup
+    set nowritebackup
+endif
+
+function! TabToggle()
+    if &expandtab
+        set shiftwidth=8
+        set softtabstop=0
+        set noexpandtab
+    else
+        execute "set shiftwidth=".g:my_tab
+        execute "set softtabstop=".g:my_tab
+        set expandtab
+    endif
+endfunction
+nnoremap <Leader>t :call TabToggle()<CR>
+
+" fix ^M line endings
+function! ConvertLineEndings ()
+    let save_cursor = getpos(".")
+    let old_query = getreg('/')
+$/  :%s/
+/e  :%s/
+    call setpos('.', save_cursor)
+    call setreg('/', old_query)
+endfunction
+nnoremap <leader>m :call ConvertLineEndings()<CR>
+
+" Strip trailing whitespace (,ss)
+function! StripWhitespace ()
+    let save_cursor = getpos(".")
+    let old_query = getreg('/')
+    :%s/\s\+$//e
+    call setpos('.', save_cursor)
+    call setreg('/', old_query)
+endfunction
+noremap <leader>ss :call StripWhitespace ()<CR>
+
+set runtimepath^=~/.vim/bundle/ctrlp.vim
+
 " ========================================================================
 " End of things set by me.
 " ========================================================================
@@ -376,3 +435,5 @@ if has("autocmd")
   augroup END
 
 endif " has("autocmd")
+
+set background=dark
