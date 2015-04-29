@@ -23,10 +23,10 @@ stty stop undef
 [[ -s "/Users/ben/.rvm/scripts/rvm" ]] && source "/Users/ben/.rvm/scripts/rvm"
 
 # Sourcing of other files
-source $HOME/dotfiles/zsh/aliases
-source $HOME/dotfiles/zsh/functions
-#source $HOME/dotfiles/zsh/prompt
-#source $HOME/dotfiles/zsh/z
+source $HOME/.dotfiles/zsh/aliases
+source $HOME/.dotfiles/zsh/functions
+#source $HOME/.dotfiles/zsh/prompt
+#source $HOME/.dotfiles/zsh/z
 
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
