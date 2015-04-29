@@ -57,7 +57,7 @@ augroup myfiletypes
   " autoindent with two spaces, always expand tabs
   autocmd FileType ruby,eruby,yaml setlocal ai sw=2 sts=2 et
   autocmd FileType ruby,eruby,yaml setlocal path+=lib
-  autocmd FileType ruby,eruby,yaml setlocal colorcolumn=80
+  "autocmd FileType ruby,eruby,yaml setlocal colorcolumn=80
   " Make ?s part of words
   autocmd FileType ruby,eruby,yaml setlocal iskeyword+=?
 
@@ -69,6 +69,7 @@ runtime macros/matchit.vim
 
 let mapleader = ","
 
+map <Leader>c :close
 map <Leader>ac :sp app/controllers/application_controller.rb<cr>
 vmap <Leader>b :<C-U>!git blame <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") <CR>,<C-R>=line("'>") <CR>p <CR>
 map <Leader>bb :!bundle install<cr>
@@ -83,7 +84,6 @@ map <Leader>cm :Rjmodel client/
 map <Leader>cs :call SearchForCallSitesCursor()<CR>
 map <Leader>ct :Rtemplate client/
 map <Leader>cv :Rjview client/
-map <Leader>cn :e ~/Dropbox/notes/coding-notes.txt<cr>
 map <Leader>d orequire 'pry'<cr>binding.pry<esc>:w<cr>
 map <Leader>g :Start gitsh<cr>
 map <Leader>gw :!git add . && git commit -m 'WIP' && git push<cr>
@@ -94,11 +94,8 @@ map <Leader>h :CommandT<CR>
 map <Leader>i mmgg=G`m<CR>
 map <Leader>l oconsole.log 'debugging'<esc>:w<cr>
 map <Leader>m :Rmodel
-map <Leader>nn :sp ~/Dropbox/notes/programming_notes.txt<cr>
-map <Leader>nt :e! ~/Dropbox/docs/trailmix/todo.md<cr>
 map <Leader>o :w<cr>:call RunNearestSpec()<CR>
 map <Leader>p :set paste<CR>o<esc>"*]p:set nopaste<cr>
-map <Leader>pn :sp ~/Dropbox/work/thoughtbot/notes/project-notes.txt<cr>
 map <Leader>ra :%s/
 map <Leader>rd :!bundle exec rspec % --format documentation<CR>
 map <Leader>rf :CommandTFlush<CR>:CommandT<CR>
@@ -173,7 +170,6 @@ set laststatus=2  " Always show status line.
 set relativenumber
 set gdefault " assume the /g flag on :s substitutions to replace all matches in a line
 set autoindent " always set autoindenting on
-set bg=light
 
 " Centralize backups, swapfiles and undo history
 function! InitBackupDir()
@@ -360,7 +356,7 @@ endfunction
 map <Leader>n :call RenameFile()<cr>
 
 " Display extra whitespace
-set list listchars=tab:»·,trail:·
+set list lcs=tab:▸\ ,trail:·,eol:¬,nbsp:_
 
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
