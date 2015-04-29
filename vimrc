@@ -170,6 +170,8 @@ set laststatus=2  " Always show status line.
 set relativenumber
 set gdefault " assume the /g flag on :s substitutions to replace all matches in a line
 set autoindent " always set autoindenting on
+" Allow cursor keys in insert mode
+set esckeys
 
 " Centralize backups, swapfiles and undo history
 function! InitBackupDir()
@@ -258,7 +260,7 @@ set wildmenu
 set wildmode=list:full
 
 " (Hopefully) removes the delay when hitting esc in insert mode
-set noesckeys
+"set noesckeys
 set ttimeout
 set ttimeoutlen=1
 
