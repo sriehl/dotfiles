@@ -176,20 +176,46 @@ set autoindent " always set autoindenting on
 set bg=light
 
 " Centralize backups, swapfiles and undo history
-if !isdirectory("~/.vim/backups")
-    call mkdir("~/.vim/backups", "p")
-endif
-if !isdirectory("~/.vim/swaps")
-    call mkdir("~/.vim/swaps", "p")
-endif
-if !isdirectory("~/.vim/undo")
-    call mkdir("~/.vim/undo", "p")
-endif
-set backupdir=~/.vim/backups
-set directory=~/.vim/swaps
-if exists("&undodir")
-    set undodir=~/.vim/undo
-endif
+function! InitBackupDir()
+  if has('win32') || has('win32unix') "windows/cygwin
+    let l:separator = '_'
+  else
+    let l:separator = '.'
+  endif
+  let l:parent = $HOME . '/' . l:separator . 'vim/'
+  let l:backup = l:parent . 'backup/'
+  let l:tmp = l:parent . 'tmp/'
+  if exists('*mkdir')
+    if !isdirectory(l:parent)
+      call mkdir(l:parent)
+    endif
+    if !isdirectory(l:backup)
+      call mkdir(l:backup)
+    endif
+    if !isdirectory(l:tmp)
+      call mkdir(l:tmp)
+    endif
+  endif
+  let l:missing_dir = 0
+  if isdirectory(l:tmp)
+    execute 'set backupdir=' . escape(l:backup, ' ') . '/,.'
+  else
+    let l:missing_dir = 1
+  endif
+  if isdirectory(l:backup)
+    execute 'set directory=' . escape(l:tmp, ' ') . '/,.'
+  else
+    let l:missing_dir = 1
+  endif
+  if l:missing_dir
+    echo 'Warning: Unable to create backup directories:' l:backup 'and' l:tmp
+    echo 'Try: mkdir -p' l:backup
+    echo 'and: mkdir -p' l:tmp
+    set backupdir=.
+    set directory=.
+  endif
+endfunction
+call InitBackupDir()
 
 " Set the tag file search order
 set tags=./tags;
