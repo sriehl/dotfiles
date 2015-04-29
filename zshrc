@@ -2,9 +2,9 @@
 bindkey "^N" insert-last-word
 
 # Show contents of directory after cd-ing into it
-chpwd() {
-  ls -lrthG
-}
+#chpwd() {
+#  ls -lrthG
+#}
 
 # Save a ton of history
 HISTSIZE=20000
