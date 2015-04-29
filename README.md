@@ -8,7 +8,7 @@ I'm also a pretty aggressive aliaser. You might find a few you like in [zsh/alia
 
 ## Installation
 
-    git clone git://github.com/sriehl/dotfiles ~/.dotfiles
+    git clone ssh://git@github.com/sriehl/dotfiles ~/.dotfiles
     cd ~/.dotfiles
     rake install
 
