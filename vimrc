@@ -168,6 +168,7 @@ set noincsearch
 set ignorecase smartcase
 set laststatus=2  " Always show status line.
 set relativenumber
+set number
 set gdefault " assume the /g flag on :s substitutions to replace all matches in a line
 set autoindent " always set autoindenting on
 " Allow cursor keys in insert mode
@@ -412,8 +413,7 @@ nnoremap <Leader>t :call TabToggle()<CR>
 function! ConvertLineEndings ()
     let save_cursor = getpos(".")
     let old_query = getreg('/')
-$/  :%s/
-/e  :%s/
+    :%s//\r
     call setpos('.', save_cursor)
     call setreg('/', old_query)
 endfunction
