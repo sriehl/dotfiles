@@ -44,8 +44,6 @@ eval "$(rbenv init -)"
 
 export EDITOR='vim'
 
-alias crontab="VIM_CRONTAB=true crontab"
-
 export GOPATH=$HOME/go
 export GOROOT=`go env GOROOT`
 #export GOROOT="/usr/local/Cellar/go/1.4.1/libexec"
@@ -55,10 +53,5 @@ export PATH="$PATH:$GOROOT/bin:$GOPATH/bin"
 export NLS_LANG=AMERICAN_AMERICA.UTF8
 export ORACLE_HOME=~/oracle/instantclient_11_2/
 export DYLD_LIBRARY_PATH=$ORACLE_HOME
-
-alias emptytrash="sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash"
-alias server="ruby -run -e httpd -- -p 5000 ."
-alias serversync='browser-sync start --server --files "*"'
-alias tunnel="ssh -D6500 ssh.stevenriehl.com"
 
 export PATH=$PATH:bin:~/bin:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:/usr/local/git/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/.rvm/bin

@@ -6,6 +6,12 @@ elif [[ $platform == 'Darwin' ]]; then
   alias a='ls -lrthG'
 fi
 
+alias crontab="VIM_CRONTAB=true crontab"
+alias emptytrash="sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash"
+alias server="ruby -run -e httpd -- -p 5000 ."
+alias serversync='browser-sync start --server --files "*"'
+alias tunnel="ssh -D6500 vultr.stevenriehl.com"
+
 alias ack='ag'
 alias amend="git commit --amend"
 alias aliases='vim ~/.dotfiles/zsh/aliases'

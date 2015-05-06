@@ -154,7 +154,7 @@ set ruler		" show the cursor position all the time
 set showcmd		" display incomplete commands
 set autoindent
 set showmatch
-set nowrap
+"set nowrap
 "set backupdir=~/.tmp
 "set directory=~/.tmp " Don't clutter my dirs up with swp and tmp files
 set autoread
@@ -461,3 +461,4 @@ if has("autocmd")
 endif " has("autocmd")
 
 set background=dark
+
