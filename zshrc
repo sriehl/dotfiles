@@ -20,7 +20,7 @@ stty start undef
 stty stop undef
 
 # RVM
-[[ -s "/Users/ben/.rvm/scripts/rvm" ]] && source "/Users/ben/.rvm/scripts/rvm"
+[[ -s "~/.rvm/scripts/rvm" ]] && source "~/.rvm/scripts/rvm"
 
 # Sourcing of other files
 source $HOME/.dotfiles/zsh/aliases
