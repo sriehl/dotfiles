@@ -34,6 +34,9 @@ Plugin 'tpope/vim-haml'
 Plugin 'bling/vim-airline'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'godlygeek/tabular.git'
+Plugin 'rust-lang/rust.vim'
+Plugin 'maksimr/vim-jsbeautify'
+Plugin 'einars/js-beautify'
 
 " Colors
 Plugin 'morhetz/gruvbox'
@@ -60,6 +63,8 @@ augroup myfiletypes
   "autocmd FileType ruby,eruby,yaml setlocal colorcolumn=80
   " Make ?s part of words
   autocmd FileType ruby,eruby,yaml setlocal iskeyword+=?
+
+  autocmd FileType javascript setlocal ai sw=4 sts=4 et
 
 augroup END
 
@@ -459,6 +464,12 @@ if has("autocmd")
   augroup END
 
 endif " has("autocmd")
+
+autocmd FileType javascript noremap <buffer>  <c-f> :call JsBeautify()<cr>
+" for html
+autocmd FileType html noremap <buffer> <c-f> :call HtmlBeautify()<cr>
+" for css or scss
+autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
 
 set background=dark
 
