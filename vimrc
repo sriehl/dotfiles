@@ -480,3 +480,5 @@ autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
 
 set background=dark
 
+" magic searching
+nnoremap / /\v
