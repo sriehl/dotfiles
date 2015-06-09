@@ -401,9 +401,16 @@ if $VIM_CRONTAB == 'true'
     set nowritebackup
 endif
 
+" virtual tabstops using spaces
+let my_tab=4
+execute "set shiftwidth=".my_tab
+execute "set softtabstop=".my_tab
+execute "set tabstop=".my_tab
+set expandtab
+
 function! TabToggle()
     if &expandtab
-        set shiftwidth=8
+        set shiftwidth=4
         set softtabstop=0
         set noexpandtab
     else
