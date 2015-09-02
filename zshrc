@@ -35,7 +35,7 @@ ZSH_THEME="steeef"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git brew ruby colorize gem heroku node npm osx sudo tmux)
+plugins=(git brew ruby colorize gem heroku node npm osx sudo)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -46,12 +46,12 @@ export EDITOR='vim'
 
 export GOPATH=$HOME/go
 export GOROOT=`go env GOROOT`
-#export GOROOT="/usr/local/Cellar/go/1.4.1/libexec"
 export PATH="$PATH:$GOROOT/bin:$GOPATH/bin"
 
 # Oracle env vars
 export NLS_LANG=AMERICAN_AMERICA.UTF8
-export ORACLE_HOME=~/oracle/instantclient_11_2/
+#export ORACLE_HOME=~/oracle/instantclient_11_2/
+export ORACLE_HOME=/usr/local/Cellar/instantclient-sqlplus/current
 export DYLD_LIBRARY_PATH=$ORACLE_HOME
 
 export PATH=$PATH:bin:~/bin:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:/usr/local/git/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/.rvm/bin
