@@ -37,6 +37,13 @@ Plugin 'godlygeek/tabular.git'
 "Plugin 'rust-lang/rust.vim'
 Plugin 'maksimr/vim-jsbeautify'
 Plugin 'einars/js-beautify'
+Plugin 'rizzatti/dash.vim'
+Plugin 'fatih/vim-go'
+Plugin 'tmhedberg/SimpylFold'
+Plugin 'scrooloose/nerdtree'
+Plugin 'jistr/vim-nerdtree-tabs'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
+Plugin 'airblade/vim-gitgutter'
 
 " Colors
 Plugin 'morhetz/gruvbox'
@@ -146,12 +153,26 @@ map <C-s> <esc>:w<CR>
 imap <C-s> <esc>:w<CR>
 map <C-t> <esc>:tabnew<CR>
 map <C-x> <C-w>c
-map <C-n> :cn<CR>
+"map <C-n> :cn<CR>
 map <C-p> :cp<CR>
 
 " Emacs-like beginning and end of line.
 imap <c-e> <c-o>$
 imap <c-a> <c-o>^
+
+" Split Navigation
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+" NerdTree autoload
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+map <C-n> :NERDTreeToggle<CR>
+set autochdir
+let NERDTreeChDirMode=2
+nnoremap <leader>n :NERDTree .<CR>
 
 set backspace=indent,eol,start " allow backspacing over everything in insert mode
 set history=500		" keep 500 lines of command line history
@@ -244,7 +265,10 @@ au FileType xml exe ":silent 1,$!xmllint --format --recover - 2>/dev/null"
 
 set shiftround " When at 3 spaces and I hit >>, go to 4, not 5.
 
-set nofoldenable " Say no to code folding...
+"set nofoldenable " Say no to code folding...
+set foldmethod=indent
+set foldlevel=99
+nnoremap <space> za
 
 command! Q q " Bind :Q to :q
 command! Qall qall
@@ -361,7 +385,7 @@ function! RenameFile()
         redraw!
     endif
 endfunction
-map <Leader>n :call RenameFile()<cr>
+map <Leader>rn :call RenameFile()<cr>
 
 " Display extra whitespace
 set list lcs=tab:▸\ ,trail:·,eol:¬,nbsp:_

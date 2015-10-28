@@ -51,7 +51,9 @@ export PATH="$PATH:$GOROOT/bin:$GOPATH/bin"
 # Oracle env vars
 export NLS_LANG=AMERICAN_AMERICA.UTF8
 #export ORACLE_HOME=~/oracle/instantclient_11_2/
-export ORACLE_HOME=/usr/local/Cellar/instantclient-sqlplus/current
-export DYLD_LIBRARY_PATH=$ORACLE_HOME
+export ORACLE_HOME=/opt/oracle/instantclient
+#export DYLD_LIBRARY_PATH=$ORACLE_HOME/sdk
+#export CGO_CFLAGS=-I/opt/oracle/instantclient/sdk/include
+#export CGO_LDFLAGS=-L/opt/oracle/instantclient
 
 export PATH=$PATH:bin:~/bin:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:/usr/local/git/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/.rvm/bin
