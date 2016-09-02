@@ -26,24 +26,28 @@ Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-unimpaired'
+"Plugin 'tpope/vim-vinegar'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'croaky/vim-colors-github'
 Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-haml'
 Plugin 'bling/vim-airline'
-Plugin 'Valloric/YouCompleteMe'
+"Plugin 'Valloric/YouCompleteMe'
 Plugin 'godlygeek/tabular.git'
 "Plugin 'rust-lang/rust.vim'
 Plugin 'maksimr/vim-jsbeautify'
-Plugin 'einars/js-beautify'
+"Plugin 'einars/js-beautify'
 Plugin 'rizzatti/dash.vim'
 Plugin 'fatih/vim-go'
 Plugin 'tmhedberg/SimpylFold'
-Plugin 'scrooloose/nerdtree'
-Plugin 'jistr/vim-nerdtree-tabs'
-Plugin 'Xuyuanp/nerdtree-git-plugin'
+"Plugin 'scrooloose/nerdtree'
+"Plugin 'jistr/vim-nerdtree-tabs'
+"Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'airblade/vim-gitgutter'
+"Plugin 'ledger/vim-ledger'
+Plugin 'elixir-lang/vim-elixir'
+"Plugin 'sdiehl/haskell-vim-proto.git'
 
 " Colors
 Plugin 'morhetz/gruvbox'
@@ -167,12 +171,13 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
 " NerdTree autoload
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-map <C-n> :NERDTreeToggle<CR>
-set autochdir
-let NERDTreeChDirMode=2
-nnoremap <leader>n :NERDTree .<CR>
+"autocmd StdinReadPre * let s:std_in=1
+"autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | wincmd p | endif
+"map <C-n> :NERDTreeToggle<CR>
+"set autochdir
+"let NERDTreeChDirMode=2
+"nnoremap <leader>n :NERDTree .<CR>
+"nnoremap <leader>n :NERDTreeToggle<CR>
 
 set backspace=indent,eol,start " allow backspacing over everything in insert mode
 set history=500		" keep 500 lines of command line history
@@ -273,7 +278,8 @@ nnoremap <space> za
 command! Q q " Bind :Q to :q
 command! Qall qall
 command! QA qall
-command! E e
+"command! E e
+command! -nargs=* -bar -bang -count=0 -complete=dir E Explore <args>
 
 
 " Disable Ex mode
