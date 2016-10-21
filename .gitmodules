@@ -4,3 +4,6 @@
 [submodule "vim/pack/sriehl/start/vim-airline"]
 	path = vim/pack/sriehl/start/vim-airline
 	url = https://github.com/vim-airline/vim-airline.git
+[submodule "vim/pack/sriehl/start/vim-surround"]
+	path = vim/pack/sriehl/start/vim-surround
+	url = https://github.com/tpope/vim-surround
