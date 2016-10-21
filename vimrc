@@ -4,56 +4,57 @@
 set nocompatible " Required by vundle
 filetype off     " Required by vundle
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
-" let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
-
-" My bundles
-Plugin 'ervandew/supertab'
-Plugin 'kchmck/vim-coffee-script'
-Plugin 'skwp/greplace.vim'
-Plugin 'tomtom/tcomment_vim'
-"Plugin 'thoughtbot/vim-rspec'
-Plugin 'tpope/vim-bundler'
-Plugin 'tpope/vim-cucumber'
-Plugin 'tpope/vim-dispatch'
-Plugin 'tpope/vim-endwise'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-rails'
-Plugin 'tpope/vim-repeat'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-unimpaired'
-"Plugin 'tpope/vim-vinegar'
-Plugin 'vim-ruby/vim-ruby'
-Plugin 'croaky/vim-colors-github'
-Plugin 'kien/ctrlp.vim'
-Plugin 'scrooloose/syntastic'
-Plugin 'tpope/vim-haml'
-Plugin 'bling/vim-airline'
-"Plugin 'Valloric/YouCompleteMe'
-Plugin 'godlygeek/tabular.git'
-"Plugin 'rust-lang/rust.vim'
-Plugin 'maksimr/vim-jsbeautify'
-"Plugin 'einars/js-beautify'
-Plugin 'rizzatti/dash.vim'
-Plugin 'fatih/vim-go'
-Plugin 'tmhedberg/SimpylFold'
+"" set the runtime path to include Vundle and initialize
+"set rtp+=~/.vim/bundle/Vundle.vim
+"call vundle#begin()
+"
+"" let Vundle manage Vundle, required
+"Plugin 'gmarik/Vundle.vim'
+"
+"" My bundles
+"Plugin 'ervandew/supertab'
+"Plugin 'kchmck/vim-coffee-script'
+"Plugin 'skwp/greplace.vim'
+"Plugin 'tomtom/tcomment_vim'
+""Plugin 'thoughtbot/vim-rspec'
+"Plugin 'tpope/vim-bundler'
+"Plugin 'tpope/vim-cucumber'
+"Plugin 'tpope/vim-dispatch'
+"Plugin 'tpope/vim-endwise'
+"Plugin 'tpope/vim-fugitive'
+"Plugin 'tpope/vim-rails'
+"Plugin 'tpope/vim-repeat'
+"Plugin 'tpope/vim-surround'
+"Plugin 'tpope/vim-unimpaired'
+""Plugin 'tpope/vim-vinegar'
+"Plugin 'vim-ruby/vim-ruby'
+"Plugin 'croaky/vim-colors-github'
+"Plugin 'kien/ctrlp.vim'
+"Plugin 'scrooloose/syntastic'
+"Plugin 'tpope/vim-haml'
+"Plugin 'bling/vim-airline'
+""Plugin 'Valloric/YouCompleteMe'
+"Plugin 'godlygeek/tabular.git'
+""Plugin 'rust-lang/rust.vim'
+"Plugin 'maksimr/vim-jsbeautify'
+""Plugin 'einars/js-beautify'
+"Plugin 'rizzatti/dash.vim'
+"Plugin 'fatih/vim-go'
+"Plugin 'tmhedberg/SimpylFold'
 "Plugin 'scrooloose/nerdtree'
-"Plugin 'jistr/vim-nerdtree-tabs'
-"Plugin 'Xuyuanp/nerdtree-git-plugin'
-Plugin 'airblade/vim-gitgutter'
-"Plugin 'ledger/vim-ledger'
-Plugin 'elixir-lang/vim-elixir'
-"Plugin 'sdiehl/haskell-vim-proto.git'
-
-" Colors
-Plugin 'morhetz/gruvbox'
-
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
+""Plugin 'jistr/vim-nerdtree-tabs'
+""Plugin 'Xuyuanp/nerdtree-git-plugin'
+"Plugin 'airblade/vim-gitgutter'
+""Plugin 'ledger/vim-ledger'
+"Plugin 'elixir-lang/vim-elixir'
+""Plugin 'sdiehl/haskell-vim-proto.git'
+"Plugin 'metakirby5/codi.vim'
+"
+"" Colors
+"Plugin 'morhetz/gruvbox'
+"
+"" All of your Plugins must be added before the following line
+"call vundle#end()            " required
 filetype plugin indent on    " required
 
 " Use the colorscheme from above
@@ -171,13 +172,25 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
 " NerdTree autoload
-"autocmd StdinReadPre * let s:std_in=1
-"autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | wincmd p | endif
-"map <C-n> :NERDTreeToggle<CR>
-"set autochdir
-"let NERDTreeChDirMode=2
-"nnoremap <leader>n :NERDTree .<CR>
-"nnoremap <leader>n :NERDTreeToggle<CR>
+autocmd StdinReadPre * let s:std_in=1
+map <C-n> :NERDTreeToggle<CR>
+set autochdir
+let NERDTreeChDirMode=2
+nnoremap <leader>n :NERDTree .<CR>
+nnoremap <leader>n :NERDTreeToggle<CR>
+
+autocmd WinEnter * call s:CloseIfOnlyNerdTreeLeft()
+" Close all open buffers on entering a window if the only
+" buffer that's left is the NERDTree buffer
+function! s:CloseIfOnlyNerdTreeLeft()
+  if exists("t:NERDTreeBufName")
+    if bufwinnr(t:NERDTreeBufName) != -1
+      if winnr("$") == 1
+        q
+      endif
+    endif
+  endif
+endfunction
 
 set backspace=indent,eol,start " allow backspacing over everything in insert mode
 set history=500		" keep 500 lines of command line history
@@ -349,7 +362,7 @@ let g:rspec_command = "Dispatch bin/rspec {spec}"
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-inoremap <Tab> <C-P>
+"inoremap <Tab> <C-P>
 
 " Let's be reasonable, shall we?
 nmap k gk
@@ -472,6 +485,12 @@ endfunction
 noremap <leader>ss :call StripWhitespace ()<CR>
 
 set runtimepath^=~/.vim/bundle/ctrlp.vim
+
+function! AIM ()
+    :%s/\t[^\t]*\t[^\t]*\t\d\d\d\d$//g
+    :call StripWhitespace()
+    :%sort
+endfunction
 
 " ========================================================================
 " End of things set by me.

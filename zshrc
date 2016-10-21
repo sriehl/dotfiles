@@ -46,7 +46,8 @@ source $ZSH/oh-my-zsh.sh
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin:/Applications/Postgres.app/Contents/Versions/latest/bin"
 
 source /usr/local/opt/chruby/share/chruby/chruby.sh
-source /usr/local/opt/chruby/share/chruby/auto.sh
+chruby ruby-2.3.1
+#source /usr/local/opt/chruby/share/chruby/auto.sh
 
 new_ruby_project() {
     echo $RUBY_AUTO_VERSION >> .ruby-version
@@ -74,9 +75,10 @@ export NLS_LANG=AMERICAN_AMERICA.UTF8
 #export ORACLE_HOME=~/oracle/instantclient_11_2/
 #export ORACLE_HOME=/opt/oracle/instantclient
 #export DYLD_LIBRARY_PATH=$ORACLE_HOME/sdk
-export DYLD_LIBRARY_PATH=/opt/oracle/instantclient/sdk
+#export DYLD_LIBRARY_PATH=/opt/oracle/instantclient/sdk
+export OCI_DIR=/opt/oracle/instantclient
 #export CGO_CFLAGS=-I/opt/oracle/instantclient/sdk/include
 #export CGO_LDFLAGS=-L/opt/oracle/instantclient
 
 #export PATH=$PATH:bin:~/bin:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:/usr/local/git/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/.rvm/bin
-
+alias verify='pbpaste | gpg --verify'

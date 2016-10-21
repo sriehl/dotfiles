@@ -13,7 +13,7 @@
         meta = yellow
 
 [core]
-	excludesfile = /Users/sriehl/.gitignore_global
+	excludesfile = /Users/sriehl/.gitignore
 	editor = vim --noplugin
 [apply]
 	whitespace = nowarn
