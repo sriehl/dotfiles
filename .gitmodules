@@ -16,3 +16,9 @@
 [submodule "vim/pack/sriehl/start/tabular"]
 	path = vim/pack/sriehl/start/tabular
 	url = https://github.com/godlygeek/tabular.git
+[submodule "vim/pack/sriehl/start/vim-polyglot"]
+	path = vim/pack/sriehl/start/vim-polyglot
+	url = https://github.com/sheerun/vim-polyglot
+[submodule "vim/pack/sriehl/start/alchemist"]
+	path = vim/pack/sriehl/start/alchemist
+	url = https://github.com/slashmili/alchemist.vim
