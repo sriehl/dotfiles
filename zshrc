@@ -35,7 +35,7 @@ ZSH_THEME="steeef"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git brew ruby colorize gem osx sudo)
+plugins=(git ruby colorize gem osx sudo)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -64,9 +64,9 @@ new_ruby_project() {
 
 export EDITOR='vim'
 
-export GOPATH=$HOME/go
-export GOROOT=`go env GOROOT`
-export PATH="$PATH:$GOROOT/bin:$GOPATH/bin"
+#export GOPATH=$HOME/go
+#export GOROOT=`go env GOROOT`
+#export PATH="$PATH:$GOROOT/bin:$GOPATH/bin"
 
 #export PATH="$PATH:/usr/local/CrossPack-AVR/bin"
 
