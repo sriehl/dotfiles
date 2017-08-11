@@ -45,8 +45,8 @@ source $ZSH/oh-my-zsh.sh
 #export PATH="~/bin:$HOME/.rbenv/bin:$HOME/.rbenv/shims:/usr/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin:/Applications/Postgres.app/Contents/Versions/latest/bin"
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin:/Applications/Postgres.app/Contents/Versions/latest/bin"
 
-source /usr/local/opt/chruby/share/chruby/chruby.sh
-chruby ruby-2.3.1
+#source /usr/local/opt/chruby/share/chruby/chruby.sh
+#chruby ruby-2.3.1
 #source /usr/local/opt/chruby/share/chruby/auto.sh
 
 new_ruby_project() {

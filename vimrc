@@ -66,6 +66,8 @@ set guifont=Source\ Code\ Pro\ for\ Powerline:h14
 " ========================================================================
 syntax on                 " Enable syntax highlighting
 
+set mouse=a
+
 augroup myfiletypes
   " Clear old autocmds in group
   autocmd!
@@ -531,3 +533,4 @@ set background=dark
 
 " magic searching
 nnoremap / /\v
+
