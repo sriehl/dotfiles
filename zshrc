@@ -82,3 +82,5 @@ export OCI_DIR=/opt/oracle/instantclient
 
 #export PATH=$PATH:bin:~/bin:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:/usr/local/git/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/.rvm/bin
 alias verify='pbpaste | gpg --verify'
+
+export ERL_AFLAGS="-kernel shell_history enabled"
