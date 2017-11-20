@@ -64,9 +64,9 @@ new_ruby_project() {
 
 export EDITOR='vim'
 
-#export GOPATH=$HOME/go
+export GOPATH=$HOME/go
 #export GOROOT=`go env GOROOT`
-#export PATH="$PATH:$GOROOT/bin:$GOPATH/bin"
+export PATH="$PATH:$GOROOT/bin:$GOPATH/bin"
 
 #export PATH="$PATH:/usr/local/CrossPack-AVR/bin"
 
@@ -76,9 +76,10 @@ export NLS_LANG=AMERICAN_AMERICA.UTF8
 #export ORACLE_HOME=/opt/oracle/instantclient
 #export DYLD_LIBRARY_PATH=$ORACLE_HOME/sdk
 #export DYLD_LIBRARY_PATH=/opt/oracle/instantclient/sdk
-export OCI_DIR=/opt/oracle/instantclient
+#export OCI_DIR=/opt/oracle/instantclient
 #export CGO_CFLAGS=-I/opt/oracle/instantclient/sdk/include
 #export CGO_LDFLAGS=-L/opt/oracle/instantclient
+export OCI_DIR=$(brew --prefix)/lib
 
 #export PATH=$PATH:bin:~/bin:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:/usr/local/git/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/.rvm/bin
 alias verify='pbpaste | gpg --verify'

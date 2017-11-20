@@ -1,6 +1,7 @@
 [user]
 	name = Steven Riehl
 	email = sriehl@fastmail.com
+	signingkey = FBC1EC6E322C55705B473F253BFD9E02EBD3F2D7
 [alias]
 	co = checkout
         cleanup = !git remote prune origin && git gc && git clean -df && git stash clear
@@ -15,6 +16,7 @@
 [core]
 	excludesfile = /Users/sriehl/.gitignore
 	editor = vim --noplugin
+	autocrlf = input
 [apply]
 	whitespace = nowarn
 
