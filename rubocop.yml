@@ -1,0 +1,14 @@
+AllCops:
+  Exclude:
+    - db/**/*
+    - vendor/**/*
+    - bin/**/*
+
+Metrics/LineLength:
+  Max: 120
+
+Metrics/MethodLength:
+  Max: 15
+
+#Rails:
+  #Enabled: true
