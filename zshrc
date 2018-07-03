@@ -43,7 +43,8 @@ source $ZSH/oh-my-zsh.sh
 #eval "$(rbenv init -)"
 
 #export PATH="~/bin:$HOME/.rbenv/bin:$HOME/.rbenv/shims:/usr/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin:/Applications/Postgres.app/Contents/Versions/latest/bin"
-export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin:/Applications/Postgres.app/Contents/Versions/latest/bin"
+export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin:/Applications/Postgres.app/Contents/Versions/latest/bin:/Users/sriehl/bin"
+export PATH=$PATH:~/.local/bin
 
 #source /usr/local/opt/chruby/share/chruby/chruby.sh
 #chruby ruby-2.3.1
@@ -85,3 +86,63 @@ export OCI_DIR=$(brew --prefix)/lib
 alias verify='pbpaste | gpg --verify'
 
 export ERL_AFLAGS="-kernel shell_history enabled"
+
+#
+# Defines transfer alias and provides easy command line file and folder sharing.
+#
+# Authors:
+#   Remco Verhoef <remco@dutchcoders.io>
+#
+
+curl --version 2>&1 > /dev/null
+if [ $? -ne 0 ]; then
+  echo "Could not find curl."
+  return 1
+fi
+
+transfer() {
+    # check arguments
+    if [ $# -eq 0 ];
+    then
+        echo "No arguments specified. Usage:\necho transfer /tmp/test.md\ncat /tmp/test.md | transfer test.md"
+        return 1
+    fi
+
+    # get temporarily filename, output is written to this file show progress can be showed
+    tmpfile=$( mktemp -t transferXXX )
+
+    # upload stdin or file
+    file=$1
+
+    if tty -s;
+    then
+        basefile=$(basename "$file" | sed -e 's/[^a-zA-Z0-9._-]/-/g')
+
+        if [ ! -e $file ];
+        then
+            echo "File $file doesn't exists."
+            return 1
+        fi
+
+        if [ -d $file ];
+        then
+            # zip directory and transfer
+            zipfile=$( mktemp -t transferXXX.zip )
+            cd $(dirname $file) && zip -r -q - $(basename $file) >> $zipfile
+            curl --progress-bar --upload-file "$zipfile" "https://transfer.sh/$basefile.zip" >> $tmpfile
+            rm -f $zipfile
+        else
+            # transfer file
+            curl --progress-bar --upload-file "$file" "https://transfer.sh/$basefile" >> $tmpfile
+        fi
+    else
+        # transfer pipe
+        curl --progress-bar --upload-file "-" "https://transfer.sh/$file" >> $tmpfile
+    fi
+
+    # cat output link
+    cat $tmpfile
+
+    # cleanup
+    rm -f $tmpfile
+}

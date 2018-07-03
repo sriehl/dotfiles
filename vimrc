@@ -534,3 +534,9 @@ set background=dark
 " magic searching
 nnoremap / /\v
 
+
+" elixir autoformat
+autocmd BufWritePost *.exs,*.ex silent :!mix format --check-equivalent %
+
+" hyper vim airline fix
+set t_RV=

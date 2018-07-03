@@ -1,6 +1,6 @@
 [user]
-    name = Steven Riehl
-    email = sriehl@fastmail.com
+	name = Steven Riehl
+	email = sriehl@fastmail.com
     signingkey = FBC1EC6E322C55705B473F253BFD9E02EBD3F2D7
 [alias]
     co = checkout
@@ -36,9 +36,9 @@
     user = sriehl
 [merge]
     ff = only
-    tool = Kaleidoscope
+	tool = Kaleidoscope
 [mergetool "Kaleidoscope"]
-    cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
     trustExitCode = true
 [filter "lfs"]
     required = true
@@ -50,8 +50,8 @@
 [difftool "Kaleidoscope"]
     cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
 [difftool "sourcetree"]
-    cmd = /usr/local/bin/ksdiff -w \"$LOCAL\" \"$REMOTE\"
-    path =
+	cmd = /usr/local/bin/ksdiff -w \"$LOCAL\" \"$REMOTE\"
+	path = 
 [mergetool "sourcetree"]
-    cmd = /usr/local/bin/ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
-    trustExitCode = true
+	cmd = /usr/local/bin/ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+	trustExitCode = true
