@@ -21,7 +21,7 @@
 [apply]
     whitespace = nowarn
 [commit]
-    gpgsign = true
+	gpgSign = true
 [help]
     autocorrect = 1
 [branch]
@@ -55,3 +55,8 @@
 [mergetool "sourcetree"]
 	cmd = /usr/local/bin/ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
 	trustExitCode = true
+[gpg]
+	program = /usr/local/bin/krgpg
+    # program = /usr/local/bin/gpg
+[tag]
+	forceSignAnnotated = true

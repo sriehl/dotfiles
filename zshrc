@@ -62,6 +62,7 @@ new_ruby_project() {
 }
 
 #eval "$(direnv hook zsh)"
+export PATH="/usr/local/opt/ruby/bin:$PATH"
 
 export EDITOR='vim'
 
@@ -146,3 +147,6 @@ transfer() {
     # cleanup
     rm -f $tmpfile
 }
+
+# Added by Krypton
+export GPG_TTY=$(tty)
