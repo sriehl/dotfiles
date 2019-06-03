@@ -492,6 +492,7 @@ function! AIM ()
     :%s/\t[^\t]*\t[^\t]*\t\d\d\d\d$//g
     :call StripWhitespace()
     :%sort
+    :set ff=unix
 endfunction
 
 " ========================================================================

@@ -57,6 +57,6 @@
 	trustExitCode = true
 [gpg]
     # program = /usr/local/bin/krgpg
-    program = /usr/local/bin/gpg
+	program = /usr/local/bin/gpg
 [tag]
 	forceSignAnnotated = true

@@ -12,13 +12,15 @@ alias server="ruby -run -e httpd -- -p 5000 ."
 alias serversync='browser-sync start --server --files "*"'
 alias tunnel="ssh -D6500 vultr.stevenriehl.com"
 
+alias cat="bat"
+alias ccat="cat"
+
 alias ack='ag'
 alias amend="git commit --amend"
 alias aliases='vim ~/.dotfiles/zsh/aliases'
 alias b='bin/rspec'
 alias bake='bundle exec rake'
 alias be='bundle exec'
-alias ben='ssh ben@benorenstein.com'
 alias bi='bundle install -j 8'
 alias be='bundle exec'
 alias br='bin/rspec'
@@ -27,7 +29,7 @@ alias bunbang='bundle install && !!'
 alias c='cd'
 alias d='cd ~/.dotfiles'
 alias dbprep='rdm && rdtp'
-alias emacs='emacs -nw'
+#alias emacs='emacs -nw'
 alias fs='foreman start'
 alias -g G='| grep'
 alias gad='git add --all .'

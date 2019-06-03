@@ -151,3 +151,6 @@ transfer() {
 
 # Added by Krypton
 export GPG_TTY=$(tty)
+
+#alias python=python3
+#alias pip=pip3
