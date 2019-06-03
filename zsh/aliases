@@ -13,7 +13,7 @@ alias serversync='browser-sync start --server --files "*"'
 alias tunnel="ssh -D6500 vultr.stevenriehl.com"
 
 alias cat="bat"
-alias ccat="cat"
+alias ccat="/bin/cat"
 
 alias ack='ag'
 alias amend="git commit --amend"

@@ -35,7 +35,7 @@ ZSH_THEME="steeef"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git ruby colorize gem osx sudo)
+plugins=(git ruby gem osx sudo)
 
 source $ZSH/oh-my-zsh.sh
 
