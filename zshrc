@@ -35,7 +35,7 @@ ZSH_THEME="steeef"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git ruby gem osx sudo)
+plugins=(git ruby colorize asdf gem osx sudo)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -62,8 +62,6 @@ new_ruby_project() {
 }
 
 #eval "$(direnv hook zsh)"
-export PATH="/usr/local/opt/ruby/bin:$PATH"
-export PATH="/usr/local/lib/ruby/gems/2.6.0/bin:$PATH"
 
 export EDITOR='vim'
 
@@ -151,6 +149,7 @@ transfer() {
 
 # Added by Krypton
 export GPG_TTY=$(tty)
+export PATH="/usr/local/opt/ruby/bin:$PATH"
+export PATH="/usr/local/lib/ruby/gems/2.6.0/bin:$PATH"
 
-#alias python=python3
-#alias pip=pip3
+export PATH="$PATH:/Users/sriehl/.cargo/bin"
