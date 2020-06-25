@@ -35,7 +35,7 @@ ZSH_THEME="steeef"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git ruby colorize asdf gem osx sudo)
+plugins=(git ruby gem osx sudo asdf)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -77,6 +77,7 @@ export NLS_LANG=AMERICAN_AMERICA.UTF8
 #export ORACLE_HOME=/opt/oracle/instantclient
 #export DYLD_LIBRARY_PATH=$ORACLE_HOME/sdk
 #export DYLD_LIBRARY_PATH=/opt/oracle/instantclient/sdk
+export DYLD_LIBRARY_PATH=~/lib
 #export OCI_DIR=/opt/oracle/instantclient
 #export CGO_CFLAGS=-I/opt/oracle/instantclient/sdk/include
 #export CGO_LDFLAGS=-L/opt/oracle/instantclient

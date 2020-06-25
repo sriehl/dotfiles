@@ -1,14 +1,13 @@
 AllCops:
+  NewCops: enable
   Exclude:
     - db/**/*
     - vendor/**/*
     - bin/**/*
 
-Metrics/LineLength:
+Layout/LineLength:
   Max: 120
 
 Metrics/MethodLength:
   Max: 15
 
-#Rails:
-  #Enabled: true

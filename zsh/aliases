@@ -15,6 +15,8 @@ alias tunnel="ssh -D6500 vultr.stevenriehl.com"
 alias cat="bat"
 alias ccat="/bin/cat"
 
+alias dockerrun='docker run --rm -w "$(pwd)" -v "$(pwd):$(pwd)" -u "$(id -u):$(id -g)"'
+
 alias ack='ag'
 alias amend="git commit --amend"
 alias aliases='vim ~/.dotfiles/zsh/aliases'
