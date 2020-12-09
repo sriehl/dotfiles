@@ -151,16 +151,9 @@ transfer() {
 # Added by Krypton
 export GPG_TTY=$(tty)
 export PATH="/usr/local/opt/ruby/bin:$PATH"
-export PATH="/usr/local/lib/ruby/gems/2.6.0/bin:$PATH"
+export PATH="`gem environment gemdir`:$PATH"
 
 #alias python=python3
 #alias pip=pip3
 
-. /usr/local/opt/asdf/asdf.sh
-. /usr/local/opt/asdf/etc/bash_completion.d/asdf.bash
-
 source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-
-# Set Spaceship ZSH as a prompt
-autoload -U promptinit; promptinit
-prompt spaceship
